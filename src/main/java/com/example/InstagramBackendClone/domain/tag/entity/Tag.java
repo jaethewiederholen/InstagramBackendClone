@@ -2,6 +2,7 @@ package com.example.InstagramBackendClone.domain.tag.entity;
 
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
 import com.example.InstagramBackendClone.domain.post.entity.PostTag;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 public class Tag extends BaseEntity {
 
     @Id
@@ -20,13 +22,4 @@ public class Tag extends BaseEntity {
     @NotBlank
     private List<PostTag> postTags = new ArrayList<PostTag>();
 
-    private String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

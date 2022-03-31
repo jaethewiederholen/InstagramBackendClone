@@ -2,10 +2,12 @@ package com.example.InstagramBackendClone.domain.account.entity;
 
 import com.example.InstagramBackendClone.domain.account.entity.Account;
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class Relationship extends BaseEntity {
 
     @Id
@@ -13,23 +15,12 @@ public class Relationship extends BaseEntity {
     @Column(name = "relationship_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "follower_id")
     private Account follower;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "following_id")
     private Account following;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Account getFollower() {
-        return follower;
-    }
-
-    public Account getFollowing() {
-        return following;
-    }
 }

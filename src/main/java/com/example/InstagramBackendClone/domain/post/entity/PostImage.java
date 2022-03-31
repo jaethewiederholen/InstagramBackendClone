@@ -1,16 +1,19 @@
 package com.example.InstagramBackendClone.domain.post.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Getter
 public class PostImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="post")
     private Post post;
 
@@ -20,24 +23,4 @@ public class PostImage {
     private String stored_file_path;
 
     private long file_size;
-
-    public Long getId() {
-        return id;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public String getOriginal_file_name() {
-        return original_file_name;
-    }
-
-    public String getStored_file_path() {
-        return stored_file_path;
-    }
-
-    public long getFile_size() {
-        return file_size;
-    }
 }

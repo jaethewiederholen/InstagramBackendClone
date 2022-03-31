@@ -2,18 +2,20 @@ package com.example.InstagramBackendClone.domain.account.entity;
 
 import com.example.InstagramBackendClone.domain.account.entity.Account;
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Getter
 public class Profile extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "profile")
+    @OneToOne(mappedBy = "profile", fetch = FetchType.LAZY)
     private Account account;
 
     @NotEmpty
@@ -23,23 +25,4 @@ public class Profile extends BaseEntity {
 
     private long file_size;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public String getOriginal_file_name() {
-        return original_file_name;
-    }
-
-    public String getStored_file_path() {
-        return stored_file_path;
-    }
-
-    public long getFile_size() {
-        return file_size;
-    }
 }

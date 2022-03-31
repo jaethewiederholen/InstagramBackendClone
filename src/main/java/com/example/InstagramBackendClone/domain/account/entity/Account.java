@@ -3,6 +3,7 @@ package com.example.InstagramBackendClone.domain.account.entity;
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
 import com.example.InstagramBackendClone.domain.member.entity.Member;
 import com.example.InstagramBackendClone.domain.post.entity.Post;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 public class Account extends BaseEntity {
 
     @Id
@@ -18,7 +20,7 @@ public class Account extends BaseEntity {
     @Column(name = "account_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -32,8 +34,8 @@ public class Account extends BaseEntity {
     private LocalDate birthDate;
 
     //private profile image one to one
-    @OneToOne
-    @JoinColumn(name="account_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
     private Profile profile;
 
     @OneToMany(mappedBy = "account")
@@ -45,36 +47,4 @@ public class Account extends BaseEntity {
 
     @OneToMany(mappedBy = "follower")
     private List<Relationship> followers = new ArrayList<Relationship>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public List<Relationship> getFollowings() {
-        return followings;
-    }
-
-    public List<Relationship> getFollowers() {
-        return followers;
-    }
 }

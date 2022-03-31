@@ -1,10 +1,12 @@
 package com.example.InstagramBackendClone.domain.post.entity;
 
 import com.example.InstagramBackendClone.domain.account.entity.Account;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class PostLike {
 
     @Id
@@ -12,23 +14,12 @@ public class PostLike {
     @Column(name = "post_like_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="post_id")
     private Post post;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="account_id")
     private Account account;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
 }

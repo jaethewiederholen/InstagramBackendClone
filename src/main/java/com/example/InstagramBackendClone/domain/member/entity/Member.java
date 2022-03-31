@@ -2,6 +2,7 @@ package com.example.InstagramBackendClone.domain.member.entity;
 
 import com.example.InstagramBackendClone.domain.account.entity.Account;
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
+import lombok.Getter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 public class Member extends BaseEntity {
 
     @Id
@@ -28,20 +30,4 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     private List<Account> accounts = new ArrayList<>();
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public List<Account> getAccounts() {
-        return accounts;
-    }
 }
