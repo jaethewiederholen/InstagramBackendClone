@@ -4,6 +4,7 @@ import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
 import com.example.InstagramBackendClone.domain.member.entity.Member;
 import com.example.InstagramBackendClone.domain.post.entity.Post;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Account extends BaseEntity {
 
     @Id
@@ -38,13 +39,13 @@ public class Account extends BaseEntity {
     @JoinColumn(name = "account_id")
     private Profile profile;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<Post>();
 
 
-    @OneToMany(mappedBy = "following")
+    @OneToMany(mappedBy = "following", cascade = CascadeType.ALL)
     private List<Relationship> followings = new ArrayList<Relationship>();
 
-    @OneToMany(mappedBy = "follower")
+    @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL)
     private List<Relationship> followers = new ArrayList<Relationship>();
 }

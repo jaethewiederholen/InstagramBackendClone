@@ -2,6 +2,7 @@ package com.example.InstagramBackendClone.domain.comment.entity;
 
 import com.example.InstagramBackendClone.domain.account.entity.Account;
 import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
+import com.example.InstagramBackendClone.domain.post.entity.Post;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -22,7 +23,11 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "comment")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
     private List<CommentLike> likes = new ArrayList<CommentLike>();
 
     @Column(length = 1000)
