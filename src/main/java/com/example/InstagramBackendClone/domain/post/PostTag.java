@@ -1,6 +1,6 @@
-package com.example.InstagramBackendClone.domain.post.entity;
+package com.example.InstagramBackendClone.domain.post;
 
-import com.example.InstagramBackendClone.domain.tag.entity.Tag;
+import com.example.InstagramBackendClone.domain.tag.Tag;
 import lombok.Getter;
 
 import javax.persistence.*;

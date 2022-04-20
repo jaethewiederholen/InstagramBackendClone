@@ -1,4 +1,4 @@
-package com.example.InstagramBackendClone.domain.base.entity;
+package com.example.InstagramBackendClone.domain.base;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import org.springframework.data.annotation.CreatedDate;

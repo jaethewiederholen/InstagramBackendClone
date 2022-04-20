@@ -1,8 +1,8 @@
-package com.example.InstagramBackendClone.domain.account.entity;
+package com.example.InstagramBackendClone.domain.account;
 
-import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
-import com.example.InstagramBackendClone.domain.member.entity.Member;
-import com.example.InstagramBackendClone.domain.post.entity.Post;
+import com.example.InstagramBackendClone.domain.base.BaseEntity;
+import com.example.InstagramBackendClone.domain.member.Member;
+import com.example.InstagramBackendClone.domain.post.Post;
 import lombok.Getter;
 import lombok.Setter;
 

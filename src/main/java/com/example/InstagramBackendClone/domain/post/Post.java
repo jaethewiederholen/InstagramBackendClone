@@ -1,8 +1,8 @@
-package com.example.InstagramBackendClone.domain.post.entity;
+package com.example.InstagramBackendClone.domain.post;
 
-import com.example.InstagramBackendClone.domain.base.entity.BaseEntity;
-import com.example.InstagramBackendClone.domain.account.entity.Account;
-import com.example.InstagramBackendClone.domain.comment.entity.Comment;
+import com.example.InstagramBackendClone.domain.base.BaseEntity;
+import com.example.InstagramBackendClone.domain.account.Account;
+import com.example.InstagramBackendClone.domain.comment.Comment;
 import lombok.Getter;
 
 import javax.persistence.*;
