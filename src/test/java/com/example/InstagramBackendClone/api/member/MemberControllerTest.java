@@ -1,14 +1,10 @@
 package com.example.InstagramBackendClone.api.member;
 
-import com.example.InstagramBackendClone.api.member.dto.MemberResponseDto;
-import com.example.InstagramBackendClone.api.member.dto.MemberSaveDto;
-import com.example.InstagramBackendClone.api.member.dto.MemberSaveResponseDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberResponseDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberSaveDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberSaveResponseDto;
 import com.example.InstagramBackendClone.domain.member.Member;
 import com.example.InstagramBackendClone.domain.member.MemberRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import net.minidev.json.JSONObject;
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +19,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

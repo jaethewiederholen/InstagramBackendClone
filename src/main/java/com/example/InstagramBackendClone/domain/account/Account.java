@@ -3,8 +3,9 @@ package com.example.InstagramBackendClone.domain.account;
 import com.example.InstagramBackendClone.domain.base.BaseEntity;
 import com.example.InstagramBackendClone.domain.member.Member;
 import com.example.InstagramBackendClone.domain.post.Post;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account extends BaseEntity {
 
     @Id
@@ -23,6 +25,7 @@ public class Account extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @JsonIgnore
     private Member member;
 
     @NotBlank
@@ -48,4 +51,20 @@ public class Account extends BaseEntity {
 
     @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL)
     private List<Relationship> followers = new ArrayList<Relationship>();
+
+    @Builder(builderClassName = "createAccount", builderMethodName = "createAccount")
+    private Account( String name, LocalDate birthDate){
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    public void setMember(Member member){
+        this.member = member;
+    }
+
+    @JsonProperty("member_id")
+    public Long getMember() {
+        return this.member.getId();
+    }
+
 }

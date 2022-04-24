@@ -1,9 +1,8 @@
 package com.example.InstagramBackendClone.service.member;
 
-import com.example.InstagramBackendClone.api.member.dto.MemberListResponseDto;
-import com.example.InstagramBackendClone.api.member.dto.MemberResponseDto;
-import com.example.InstagramBackendClone.api.member.dto.MemberSaveDto;
-import com.example.InstagramBackendClone.api.member.dto.MemberSaveResponseDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberResponseDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberSaveDto;
+import com.example.InstagramBackendClone.domain.member.dto.MemberSaveResponseDto;
 import com.example.InstagramBackendClone.domain.member.Member;
 import com.example.InstagramBackendClone.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -21,16 +19,20 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public MemberSaveResponseDto save(MemberSaveDto memberSaveDto) {
-        MemberSaveResponseDto result = new MemberSaveResponseDto(memberRepository.save(memberSaveDto.ToEntity()));
+    public HashMap<String, Object> save(MemberSaveDto memberSaveDto) {
+        HashMap<String, Object> result = new HashMap<String, Object>();
+        Member member = memberRepository.save(memberSaveDto.ToEntity());
+        result.put("id", member.getId());
+
         return result;
     }
 
     @Transactional(readOnly = true)
     public MemberResponseDto findById(Long id){
-        Member entity = memberRepository.findById(id).orElseThrow(
+        Member member = memberRepository.findById(id).orElseThrow(
                 ()-> new IllegalArgumentException("해당 유저가 없습니다. id=" + id));
-        return new MemberResponseDto(entity);
+        System.out.println(member.getAccounts());
+        return new MemberResponseDto(member);
     }
 
     @Transactional(readOnly = true)

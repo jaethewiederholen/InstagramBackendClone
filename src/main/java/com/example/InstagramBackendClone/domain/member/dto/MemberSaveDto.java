@@ -1,4 +1,4 @@
-package com.example.InstagramBackendClone.api.member.dto;
+package com.example.InstagramBackendClone.domain.member.dto;
 
 import com.example.InstagramBackendClone.domain.member.Member;
 import io.swagger.v3.oas.annotations.media.Schema;
